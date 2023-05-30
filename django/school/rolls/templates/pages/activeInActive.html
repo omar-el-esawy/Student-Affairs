@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <title>
+        Students Status
+    </title>
+    <link rel="stylesheet" href="{% static 'CSSPages/activeStyle.css' %}">
+    <script src="{% static 'javaScript/activeSctipt.js' %}"></script>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+
+        .button2:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="{% url 'rolls:search' %}"><img src="../../static/assets/images/Logo.png"></a>
+
+
+            <div class="nav-links">
+                <ul>
+                    <li><a href="{% url 'rolls:search' %}">Home</a></li>
+                    <li><a href="{% url 'rolls:add' %}">Add</a></li>
+                    <li><a href="{% url 'rolls:active' %}">Active</a></li>
+                    <li><a href="{% url 'rolls:about' %}">About</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <div class="Text-box">
+        <h1 id="first">Student's <br></h1>
+        <h1 id="second">Active/InActive</h1>
+        <p>Here You can Assign the active of students</p>
+
+    </div>
+    <div class="campus-col">
+        <img src="../../static/assets/images/longimage.jpg">
+        <button onclick="submit()" class="btn">Submit</button>
+    </div>
+
+    <div class="student-list">
+        <h2>Student List</h2>
+    </div>
+
+    <table>
+        <h3>view student list
+            <hr>
+        </h3>
+        <tr>
+            <th> Username</th>
+            <th>Gender</th>
+            <th>ID</th>
+            <th>Level</th>
+            <th>Status</th>
+        </tr>
+        {% for student in students %}
+        <tbody>
+            <tr>
+                <td>{{student.name}}</td>
+                <td>{{student.gender}}</td>
+                <td>{{student.idenNum}}</td>
+                <td>{{student.level}}</td>
+                <td>
+                    <button class="button button2" type="submit">
+                        <a href="{% url 'rolls:activeEdit'  student.idenNum %}">
+                            change
+                        </a>
+                    </button>
+
+                    <!-- <label class="switch">
+                        <input type="checkbox" name="cbox" id="cbox" onchange="onCbChange('cbox')">
+                        <span class="slider round"></span>
+                    </label> -->
+                    active/inactive
+                </td>
+            </tr>
+
+        </tbody>
+        {% endfor %}
+    </table>
+    </div>
+
+</body>
+
+</html>

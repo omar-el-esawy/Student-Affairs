@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body%}
+     <div id="form"> 
+        <form id="forms" method = "POST" action="{% url 'register-page' %}" name = "myForm" onsubmit = "return validate()" >
+		{% csrf_token %}
+		<label for="username" >Username</label>
+            <br>
+            <input type="text" id="username" class="input" name="username" placeholder="Your user name..">
+            <br><br>
+		<label for="firstname" >First Name</label>
+            <br>
+            <input type="text" id="firstname" class="input" name="firstname" placeholder="Your first name..">
+            <br><br>
+            <label for="lastname">Last name</label>
+            <br>
+            <input type="text" id="lastname" class="input" name="lastname" placeholder="Your last name..">
+            <br><br>
+			<label for="Email">Email</label>
+            <br>
+            <input type="text" id="Email" class="input" name="Email" placeholder="Your Email..">
+            <br><br>
+            <label for="password1">Password</label>
+            <br>
+            <input type="password" id="password1" class="input" name="password1" placeholder="**********">
+            <br><br>
+			<label for="password2">Confirm Password</label>
+            <br>
+            <input type="password" id="password2" class="input" name="password2" placeholder="**********">
+                  <div>
+            <p style="color: red; text-align:center;" id="error"> </p>
+{% if messages %}
+    {% for message in messages %}
+    	<h4 style="color: red; text-align:center;"> {{ message }} </h4>
+    {% endfor %}
+{% endif %}
+</div>
+            <div class="buttons">
+        <button id="submit" type="submit"><a class="button">submit</a></button> 
+		<button type="button">
+            <a href="{% url 'home-page' %}" class="button">Return to home page</a>
+        </button> 
+		<button type="button">
+            <a href="{% url 'login-page' %}" class="button">Login</a>
+        </button> 
+            </div>
+</form>
+</div>
+<script>
+function validate() {
+         if( document.myForm.username.value == "" ) {
+            document.getElementById("error").innerHTML="Please provide your user name!";
+            document.myForm.username.focus() ;
+            
+            return false;
+         }
+         if( document.myForm.firstname.value[0] != document.myForm.firstname.value[0].toUpperCase() ) {
+            document.getElementById("error").innerHTML="first letter of first name must be capital";
+            document.myForm.firstname.focus() ;
+            
+            return false;
+         }
+         if( document.myForm.lastname.value[0] != document.myForm.lastname.value[0].toUpperCase() ) {
+            document.getElementById("error").innerHTML="first letter of last name must be capital";
+            document.myForm.lastname.focus() ;
+            
+            return false;
+         }
+         if( document.myForm.Email.value == "" ) {
+            document.getElementById("error").innerHTML="Please provide your Email!";
+            document.myForm.Email.focus() ;
+            
+            return false;
+         }
+         if( document.myForm.password1.value != document.myForm.password2.value ) {
+            document.getElementById("error").innerHTML="the two passwords you've entered don't match!";
+            document.myForm.password1.focus() ;
+            
+            return false;
+         }
+         var emailID = document.myForm.Email.value;
+         atpos = emailID.indexOf("@");
+         dotpos = emailID.lastIndexOf(".");
+         if (atpos < 1 || ( dotpos - atpos < 2 )) {
+            document.getElementById("error").innerHTML="Please enter correct email, for example: email@gmail.com";
+            document.myForm.Email.focus() ;
+            
+            return false;
+         }
+         if( document.myForm.password1.value.length <8 ) {
+            document.getElementById("error").innerHTML="passwords must be at least 8 characters";
+            document.myForm.password1.focus() ;
+            
+            return false;
+         }
+         return true;
+      } 
+</script>
+{% endblock body %} 

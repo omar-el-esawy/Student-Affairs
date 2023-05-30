@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body%}
+        <div id="form">
+            <form id="forms" method="POST" action="{% url 'login-page' %}">
+                {% csrf_token %}
+                <label for="username">User name</label>
+                 <br>
+                <input type="text" id="username" class="input" name="username" placeholder="Your username..">
+                <br><br>
+                <label for="password">Password</label>
+                <br>
+                <input type="password" id="password" class="input" name="password" placeholder="**********">
+                <br><br>
+             <div class="buttons">
+                <button type="submit">
+                    <a class="button">Login</a>
+                </button>
+                <button type="button">
+                    <a href="{% url 'home-page' %}" class="button">Return to home page</a>
+                </button>  
+             </div>  
+                </form>
+        </div>
+{% endblock body %}

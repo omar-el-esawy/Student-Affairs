@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body%}
+<div id="form">
+    <form id="forms" method="POST" >
+        {% csrf_token %}
+        {{updateForm}}
+        <div class="buttons">
+        <button type="submit">
+            <a class="button">Update</a>
+        </button>
+        </div>
+    </form>  
+</div>
+
+{% endblock %}

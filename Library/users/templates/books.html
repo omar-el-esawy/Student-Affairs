@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body%}
+{% if user.is_authenticated %}
+<table class="book-info">
+    <thead>
+        <tr>
+            <th> Title </th>
+            <th>Author  </th>
+            <th>Publication Year</th>
+            <th>ISBN</th>
+            <th>Show book</th>
+            </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.publicationYear}}</td>
+            <td>{{ book.isbn }}</td>
+            <form id="forms" action="{% url 'booksInformation' %}" method="POST">
+                {% csrf_token %}
+                <td>
+                    <div class="buttons">
+                        <button name="show" type="submit" value="{{ book.isbn }}">
+                        <a class="button">Show book</a>
+                        </button>
+                    </div>
+                    </td>
+            </form>
+
+         </tr>
+         {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <div class="buttons">
+        <h1>Welcome.</h1>
+        <button type="button">
+            <a class="button" href="{% url 'login-page' %}">Login</a>
+        </button>
+        <button type="button">
+            <a class="button" href="{% url 'register-page' %}">Signup</a>
+        </button>
+    </div>
+{% endif %}
+{% endblock %}

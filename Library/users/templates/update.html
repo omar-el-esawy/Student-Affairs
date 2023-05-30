@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body%}
+{% if user.is_authenticated %}
+<style>
+    .helptext{
+    display: block;
+    color: red;
+}
+</style>
+<div id="form">
+      <form method="POST" id="forms" action="{% url 'update-page' %}" onsubmit = "return validate()" >
+          {% csrf_token %}
+              {{ u_form }}
+              <p style="color: red; text-align:center;" id="error"> </p>
+          <div class="buttons">
+              <button type="submit"><a class="button">Update</a></button>
+              <button type="submit"><a href="{% url 'updatepass-page' %}" class="button">Update pass?</a></button>
+          </div>
+      </form>
+</div>
+{% else %}
+    <div class="buttons">
+        <h1>Welcome.</h1>
+        <button type="button">
+            <a class="button" href="{% url 'login-page' %}">Login</a>
+        </button>
+        <button type="button">
+            <a class="button" href="{% url 'register-page' %}">Signup</a>
+        </button>
+    </div>
+<script>
+function validate() {
+         if( document.myForm.username.value == "" ) {
+            document.getElementById("error").innerHTML="Please provide your user name!";
+            document.myForm.username.focus() ;
+            
+            return false;
+         }
+         if( document.myForm.firstname.value[0] != document.myForm.firstname.value[0].toUpperCase() ) {
+            document.getElementById("error").innerHTML="first letter of first name must be capital";
+            document.myForm.firstname.focus() ;
+            
+            return false;
+         }
+         if( document.myForm.lastname.value[0] != document.myForm.lastname.value[0].toUpperCase() ) {
+            document.getElementById("error").innerHTML="first letter of last name must be capital";
+            document.myForm.lastname.focus() ;
+            
+            return false;
+         }
+         if( document.myForm.Email.value == "" ) {
+            document.getElementById("error").innerHTML="Please provide your Email!";
+            document.myForm.Email.focus() ;
+            
+            return false;
+         }
+         var emailID = document.myForm.Email.value;
+         atpos = emailID.indexOf("@");
+         dotpos = emailID.lastIndexOf(".");
+         if (atpos < 1 || ( dotpos - atpos < 2 )) {
+            document.getElementById("error").innerHTML="Please enter correct email, for example: email@gmail.com";
+            document.myForm.Email.focus() ;  
+            return false;
+         }
+         return true;
+      } 
+</script>
+{% endif %}
+    {% endblock body %} 

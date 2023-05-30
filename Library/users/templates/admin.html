@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body%}
+{% if user.is_authenticated %}
+    {% if user.is_superuser%}
+<div>
+    <div class="buttons">
+    <button type="button" onclick="displayAddBookForm()" > <a class="button">Add book +</a></button>
+    </div>
+    <br>
+    <form  method="POST"  id="AddBook" style="display: none;">
+        {% csrf_token %}
+        {{Bookform}}
+        <div class="buttons">
+        <button type="submit">
+            <a class="button">Add</a>
+        </button>
+        </div>
+
+        
+    </form>  
+</div>
+<table class="book-info">
+    <thead>
+        <tr>
+            <th> Title </th>
+            <th>Author  </th>
+            <th>ISBN</th>
+            <th>Publication Year</th>
+            <th>Update Book</th>
+            </tr>
+    </thead>
+    <tbody>
+        {% for x in adminBooks %}
+        <tr>
+            <td>{{x.title}}</td>
+            <td>{{x.author}}</td>
+            <td>{{x.isbn}}</td>
+            <td>{{x.publicationYear}}</td>
+            
+            <td>
+            <div class="buttons">
+        <button>
+            <a href="{% url 'update_book' x.isbn  %}" class="button">Update</a>
+        </button>
+        </div>
+            </td>
+         </tr>
+         {% endfor %}
+         
+    </tbody>
+   
+</table>
+{% else %}
+    <div class="buttons">
+        <h1>You're not logged in as admin.</h1>
+        <button type="button">
+            <a class="button" href="{% url 'login-page' %}">Login</a>
+        </button>
+        <button type="button">
+            <a class="button" href="{% url 'register-page' %}">Signup</a>
+        </button>
+    </div>
+{% endif %}
+{% else %}
+    <div class="buttons">
+        <h1>Welcome.</h1>
+        <button type="button">
+            <a class="button" href="{% url 'login-page' %}">Login</a>
+        </button>
+        <button type="button">
+            <a class="button" href="{% url 'register-page' %}">Signup</a>
+        </button>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <title>University Library System</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    {% if user.is_authenticated %}
+        {% if user.is_superuser%}
+            {% include 'adminnav.html' %}
+        {% else %}
+            {% include 'usernav.html' %}
+        {% endif %}
+    {% else %}
+        {% include 'loggedoutnav.html' %}
+    {% endif %}
+<br>
+{% block body %}
+
+{% endblock %}
+
+<script>
+   function displayAddBookForm()
+   {
+       document.getElementById("AddBook").style.display = "block";
+   }
+</script>
+
+</body>
+</html>

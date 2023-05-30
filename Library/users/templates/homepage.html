@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body%}
+{% if user.is_authenticated %}
+    <div id="welcome demo" class="buttons">
+        <h1>Welcome, {{request.user.first_name}} {{request.user.last_name}}</h1>
+        <button type="button">
+            <a class="button" href="{% url 'logout-page' %}">Logout</a>
+        </button>
+        <button type="button">
+            <a class="button" href="{% url 'update-page' %}">Update</a>
+        </button>
+        {% if user.is_superuser %}
+        <button type="button">
+            <a class="button" href="{% url 'admin-page' %}">Books</a>
+        </button>
+        {% else %}
+        <button type="button">
+            <a class="button" href="{% url 'books' %}">Books</a>
+        </button>
+        {% endif %}
+    </div>
+    <script>
+
+    </script>
+{% else %}
+    <div class="buttons">
+        <h1>Welcome.</h1>
+        <button type="button">
+            <a class="button" href="{% url 'login-page' %}">Login</a>
+        </button>
+        <button type="button">
+            <a class="button" href="{% url 'register-page' %}">Signup</a>
+        </button>
+    </div>
+{% endif %}
+{% endblock body %} 

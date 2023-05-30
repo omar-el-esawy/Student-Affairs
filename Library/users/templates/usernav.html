@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<header>
+        <div class="menu" id="home">
+            <ul>
+                <li><a href="{% url 'home-page' %}">Home</a></li>
+                <li><a href="{% url 'books' %}">Books</a></li>
+                <li><a href="{% url 'update-page' %}">Update</a></li>
+                <li><a href="{% url 'logout-page' %}">Logout</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+            </ul>
+            <div class="search">
+            <form  method="GET" action="{% url 'books' %}">
+                <input type="text"
+                    placeholder="Search Books.." name="search-name">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            </div>
+        </div>
+        <script>
+        </script>
+    </header>

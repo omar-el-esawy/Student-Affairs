@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="{% static 'CSSPages/resultStyle.css' %}">
+</head>
+
+<body>
+    <section class="header">
+        <div class="rectangle">
+            <div class="logo">
+                <a href="{% url 'rolls:search' %}">
+                    <img src="../../static/assets/images/Logo.png">
+                </a>
+            </div>
+            <nav>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="{% url 'rolls:search' %}">Home</a></li>
+                        <li><a href="{% url 'rolls:add' %}">Add</a></li>
+                        <li><a href="{% url 'rolls:active' %}">Active</a></li>
+                        <li><a href="{% url 'rolls:about' %}">About</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="text">
+                <h1 id="p1">Student's</h1><br>
+                <h1 id="para">Results</h1><br>
+                <p id="p2">Here you can see the results for students</p>
+            </div>
+            <div class="main">
+                <form method="GET">
+
+                    <input type="search" name="search_name" placeholder="search" id="bar">
+                    <!-- <a href="chrome://newtab/"> -->
+                    <button type="submit" value="send">
+                        <!-- <div> -->
+                        <img src="../../static/assets/images/homepage copy.png">
+                        <!-- </div> -->
+                    </button>
+                    <br>
+                    <br>
+                    <!-- <a href="{% url 'rolls:searchResult' %}">search</a> -->
+                </form>
+                <!-- </a> -->
+
+            </div>
+
+        </div>
+    </section>
+    <section class="Student">
+        {% for student in students %}
+        <h1>{{student.name}}</h1>
+        <p>{{student.idenNum}}</p>
+        <div>
+            <a href="{% url 'rolls:edit' student.idenNum %}">Edit information</a>
+            <a href="{% url 'rolls:assign'  student.idenNum %}">Add department</a>
+        </div>
+        <hr style="height:1px;border-width:0;color:gray;background-color:gray ;">
+        {% endfor %}
+
+
+    </section>
+</body>
+
+</html>

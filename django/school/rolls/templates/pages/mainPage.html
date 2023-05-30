@@ -1,0 +1,58 @@
+{% load static %}
+<html>
+
+<head>
+    <title>first page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'CSSPages/mainSytle.css' %}">
+</head>
+
+<body>
+
+
+    <!--                    -->
+    <div class="bgimg">
+        <div class="topleft">
+            <!--        <p>Logo</p>-->
+        </div>
+        <div class="middle">
+            <h1>Welcome to the web projects of FCAI </h1>
+            <hr>
+            <p>Choose one</p>
+        </div>
+        <div class="bottomleft">
+            <!--        <p>Some text</p>-->
+        </div>
+    </div>
+    <div class="row">
+        <a href="" class="project-col">
+            <div>
+                <h3>First Project</h3>
+                <p>Human Resources</p>
+            </div>
+        </a>
+        <a href="{% url 'rolls:search' %}" class="project-col">
+            <div>
+                <h3>Second Project</h3>
+                <p>Students Affairs</p>
+            </div>
+        </a>
+        <a href="" class="project-col">
+            <div>
+                <h3>Third Project</h3>
+                <p>Higher Studies</p>
+            </div>
+        </a>
+
+        <a href="" class="project-col">
+            <div>
+                <h3>Forth Project</h3>
+                <p>Laboratory
+                    Tracking</p>
+            </div>
+        </a>
+    </div>
+
+
+</body>
+
+</html>

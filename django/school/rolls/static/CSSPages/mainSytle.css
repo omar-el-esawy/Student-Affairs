@@ -1,0 +1,114 @@
+.row {
+
+    margin-top: -10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+p {
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    padding: 20px;
+}
+
+a {
+    color: honeydew;
+    font-family: Poppins, sans-serif;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 5px;
+    padding-top: 50px;
+}
+
+.project-col {
+    flex-basis: 31%;
+    background: black;
+    border-radius: 20px;
+    /*margin-bottom:5%;*/
+    padding: 2%;
+    /* padding: px 5%; */
+    box-sizing: border-box;
+    margin: 5%;
+    transition: 0.5s;
+}
+
+h3 {
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    font-weight: 1000;
+    margin: 10px 0;
+
+}
+
+.project-col:hover {
+    box-shadow: 20px 20px 20px 20px rgba(0.2, 0.2, 0.2, 0.2);
+}
+
+body {
+    background-image: url("../assets/images/0.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Set height to 100% for body and html to enable the background image to cover the whole page: */
+body,
+html {
+    height: 100%
+}
+
+.bgimg {
+    /* Background image */
+    /*background-image: url('campus-tour-north_26-1280x720.jpg');*/
+    /* Full-screen */
+    height: 100%;
+    /* Center the background image */
+    background-position: center;
+    /* Scale and zoom in the image */
+    background-size: cover;
+    /* Add position: relative to enable absolutely positioned elements inside the image (place text) */
+    position: relative;
+    /* Add a white text color to all elements inside the .bgimg container */
+    color: honeydew;
+    /* Add a font */
+    font-family: "Courier New", Courier, monospace;
+    /* Set the font-size to 25 pixels */
+    font-size: 25px;
+}
+
+/* Position text in the top-left corner */
+.topleft {
+    position: absolute;
+    top: 0;
+    left: 16px;
+}
+
+/* Position text in the bottom-left corner */
+.bottomleft {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+}
+
+
+/* Position text in the middle */
+
+.middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: Poppins, sans-serif;
+
+
+}
+
+
+/* Style the <hr> element */
+hr {
+
+    width: 40%;
+}

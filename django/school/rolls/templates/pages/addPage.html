@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FCAI </title>
+    <link rel="stylesheet" href="{% static 'CSSPages/addSytle.css' %}">
+</head>
+
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="search.html"><img src="../../static/assets/images/Logo.png"></a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="{% url 'rolls:search' %}">Home</a></li>
+                    <li><a href="{% url 'rolls:add' %}">Add</a></li>
+                    <li><a href="{% url 'rolls:active' %}">Active</a></li>
+                    <li><a href="{% url 'rolls:about' %}">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="text-box">
+            <h1 id="Studnts">Student's</h1>
+            <h1>Add info</h1>
+            <p>
+                Here you can add the student information, make sure that you submit after finishing
+            </p>
+        </div>
+    </section>
+
+    <section class="inner-page">
+        <div class="container">
+            <header>Add Student</header>
+
+            <form method="POST" enctype="multipart/form-data" action="{% url 'rolls:searchResult' %}">
+                {% csrf_token %}
+
+                <div class=" form first">
+                    <div class="details personal">
+                        <span class="title">Personal Details</span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Full Name</label>
+                                {{data.name}}
+                            </div>
+
+                            <div class="input-field">
+                                <label>Date</label>
+                                {{data.date}}
+                                <!-- <input type="date" placeholder="Enter thr date" required> -->
+                            </div>
+
+
+
+                            <div class="input-field">
+                                <label>Mobile Number</label>
+                                {{data.mopile}}
+                                <!-- <input type="tel" placeholder="Enter The Phone number" -->
+                                <!-- onkeypress="return onlyNumberKey(event)" maxlength="11" required /> -->
+
+                            </div>
+
+                            <div class="input-field">
+                                <label>Gender</label>
+                                {{data.gender}}
+                                <!-- <select required>
+                                    <option disabled selected>Select Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+
+                                </select> -->
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="details ID">
+                        <span class="title">Faculty Details</span>
+
+                        <div class="fields">
+
+                            <div class="input-field">
+                                <label>Email</label>
+                                {{data.email}}
+                                <!-- <input type="email" placeholder="Enter your Email" required> -->
+                            </div>
+
+                            <div class="input-field">
+                                <label>ID</label>
+                                {{data.idenNum}}
+                                <!-- <input type="tel" placeholder="Enter your ID" onkeypress="return onlyNumberKey(event)"
+                                    maxlength="8" required> -->
+                            </div>
+                            <div class="input-field">
+                                <label>GPA</label>
+                                {{data.gpa}}
+                                <!-- <input type="tel" placeholder="Enter your GPA" onkeypress="return onlyNumberKey(event)"
+                                    required> -->
+                            </div>
+
+                            <div class="input-field">
+                                <label>Status</label>
+                                {{data.status}}
+                                <!-- <select required>
+                                    <option disabled selected>Select Status</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+
+                                </select> -->
+                            </div>
+                            <div class="input-field">
+                                <label>Level</label>
+                                {{data.level}}
+                                <!-- <select required>
+                                    <option disabled selected>Select Level</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select> -->
+                            </div>
+                            <div class="input-field">
+                                <label>Department</label>
+                                {{data.department}}
+                                <!-- <select required>
+                                    <option disabled selected>Select Department</option>
+                                    <option>CS</option>
+                                    <option>IS</option>
+                                    <option>AI</option>
+                                    <option>IT</option>
+                                    <option>DS</option>
+
+                                </select> -->
+                            </div>
+                        </div>
+
+                        <button id="myBtn" onclick="submit()" type="submit">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <br>
+
+    <script src="{% static 'JavaScript/addScript.js' %}"> </script>
+</body>
+
+</html>

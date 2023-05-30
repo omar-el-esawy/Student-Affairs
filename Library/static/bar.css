@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+form.searchbar input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+  border-bottom-left-radius: 7px;
+  border-top-left-radius: 7px;
+}
+
+form.searchbar button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #b19311;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+form.searchbar button:hover {
+  background: #8a7603;
+}
+
+form.searchbar::after {
+  content: "";
+  clear: both;
+  display: table;
+}

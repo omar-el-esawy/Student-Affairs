@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body%}
+{% if user.is_authenticated %}
+<div id="form">
+      <form method="POST" id="forms" action="{% url 'updatepass-page' %}" >
+          {% csrf_token %}
+              {{ form }}
+          <div class="buttons">
+              <button type="submit"><a class="button">Update</a></button>
+          </div>
+      </form>
+</div>
+{% else %}
+    <div class="buttons">
+        <h1>Welcome.</h1>
+        <button type="button">
+            <a class="button" href="{% url 'login-page' %}">Login</a>
+        </button>
+        <button type="button">
+            <a class="button" href="{% url 'register-page' %}">Signup</a>
+        </button>
+    </div>
+{% endif %}
+    {% endblock body %} 

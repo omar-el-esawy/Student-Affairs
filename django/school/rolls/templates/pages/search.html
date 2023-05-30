@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="with=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSSPages/searchStyle.css' %}">
+
+</head>
+
+<body>
+    <section class="header">
+        <div class="rectangle">
+
+
+            <nav>
+                <div class="image">
+                    <a href="{% url 'rolls:search' %}">
+
+                        <img src="../../static/assets/images/Logo.png" />
+                    </a>
+
+                </div>
+
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="{% url 'rolls:search' %}">Home</a></li>
+                        <li><a href="{% url 'rolls:add' %}">Add</a></li>
+                        <li><a href="{% url 'rolls:active' %}">Active</a></li>
+                        <li><a href="{% url 'rolls:about' %}">About</a></li>
+                    </ul>
+
+                </div>
+            </nav>
+            <P id="p1"> search</P>
+            <br>
+            <p id="p2">for students</p>
+            <br>
+            <p id="p3">you can search for students by their name and then edit informations</p>
+            <div class="main">
+                <form method="GET" action="{% url 'rolls:searchResult' %}">
+
+                    <input type="search" name="search_name" placeholder="search">
+                    <button type="submit"><img src="../../static/assets/images/homepage copy.png"></a></button>
+                </form>
+            </div>
+
+            <div class="image2">
+                <img src="../../static/assets/images/image.png">
+                <div class="send">
+                    <a href="{% url 'rolls:searchResult' %}">
+                        <!-- <input type="submit" value="send"> -->
+                    </a>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>

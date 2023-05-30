@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FCAI </title>
+    <link rel="stylesheet" href="{% static 'CSSPages/addSytle.css' %}">
+</head>
+
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="{% url 'rolls:search' %}"><img src="../../static/assets/images/Logo.png"></a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="{% url 'rolls:search' %}">Home</a></li>
+                    <li><a href="{% url 'rolls:add' %}">Add</a></li>
+                    <li><a href="{% url 'rolls:active' %}">Active</a></li>
+                    <li><a href="{% url 'rolls:about' %}">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="text-box">
+            <h1 id="Studnts">Student's</h1>
+            <h1>department</h1>
+            <p>Here you can assign the department for student if the student in third level</p>
+        </div>
+    </section>
+
+    <section class="inner-page">
+        <div class="container">
+            <header>Assignment page</header>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form first">
+                    <div class="details personal">
+                        <span class="title">Student information </span>
+
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Full Name</label>
+                                <h1>
+                                    {{data.name}}
+                                </h1>
+                            </div>
+
+                            <div class="input-field">
+                                <label>ID</label>
+                                <h1>
+                                    {{data.idenNum}}
+                                </h1>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="details ID">
+                        <span class="title">Department Assignment</span>
+
+                        <div class="fields">
+
+
+                            <div class="input-field">
+                                <label>Choose your Department</label>
+                                {{form.department}}
+                                <!-- <select required>
+
+                                    <option disabled selected>Select </option>
+                                    <option>CS</option>
+                                    <option>IS</option>
+                                    <option>AI</option>
+                                    <option>IT</option>
+                                    <option>DS</option>
+
+                                </select> -->
+                            </div>
+                        </div>
+
+                        <button id="myBtn" onclick="submit()" type="submit">
+
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <br>
+
+    <script src="{% static 'javaScript/depScript.js' %}"> </script>
+
+</body>
+
+</html>
